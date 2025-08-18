@@ -6,7 +6,9 @@
   "content": {
     "root": "content"
   },
-  "themeConfig": [],
+  "themeConfig": [
+    "config/_default/config.toml"
+  ],
   "arrangement": [],
   "showCommitModal": false
 }
