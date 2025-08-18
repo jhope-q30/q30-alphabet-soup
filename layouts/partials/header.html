@@ -1,0 +1,9 @@
+{{- $currentPage := . -}}
+<a class="skip" href="#{{ site.Params.styles.main_id }}">{{ i18n "skipToContent" }}</a>
+<header id="{{ site.Params.styles.site_header }}">
+    <div class="{{ site.Params.styles.site_header_main }}">
+        <button type="button" tabindex="-1" id="{{ site.Params.styles.menu_toggle }}" aria-controls="{{ site.Params.styles.site_navigation }}" aria-label="{{ i18n "menu" }}" aria-expanded="false" data-labels={{- ( slice ( i18n "openMenu" ) ( i18n "closeMenu" ) ) | jsonify -}}><span><span class="hamburger"><span></span><span></span><span></span><span></span></span></span></button>
+        <div class="{{ site.Params.styles.branding }}"><a href="{{ site.BaseURL | relLangURL }}" title="{{ i18n "home" }}">{{ site.Title }}</a></div>
+    </div>
+    {{- partial "navigation/site" . }}
+</header>

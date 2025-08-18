@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="308"
+   height="292.23474"
+   viewBox="0 0 308 292.23474"
+   fill="none"
+   version="1.1"
+   id="svg36"
+   sodipodi:docname="Q30.svg"
+   inkscape:version="1.2.2 (732a01da63, 2022-12-09)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <defs
+     id="defs40" />
+  <sodipodi:namedview
+     id="namedview38"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false"
+     inkscape:zoom="2.2596567"
+     inkscape:cx="173.69896"
+     inkscape:cy="233.22127"
+     inkscape:window-width="2560"
+     inkscape:window-height="1377"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg36" />
+  <title
+     id="title2">Q30</title>
+  <g
+     id="g285"
+     style="fill:#000000">
+    <path
+       d="m 76.998,69.1248 25.668,25.662 V 197.465 l -25.668,25.668 z"
+       fill="white"
+       id="path4"
+       style="fill:#000000" />
+    <path
+       d="m 231.001,69.1248 -25.668,25.662 V 197.465 l 25.668,25.668 z"
+       fill="white"
+       id="path6"
+       style="fill:#000000" />
+    <path
+       d="m 179.664,171.798 -25.668,-25.675 25.668,-25.668 z"
+       fill="white"
+       id="path8"
+       style="fill:#000000" />
+    <path
+       d="m 179.664,17.7708 14.517,14.5225 c 7.142,7.149 11.151,16.8367 11.151,26.9376 v 35.5563 l -25.668,25.6678 z"
+       fill="white"
+       id="path10"
+       style="fill:#000000" />
+    <path
+       d="M 128.335,120.455 102.667,94.7872 V 59.2187 c 0,-10.1069 4.015,-19.8007 11.164,-26.9436 l 14.504,-14.5043 z"
+       fill="white"
+       id="path12"
+       style="fill:#000000" />
+    <path
+       d="m 128.335,274.464 -14.516,-14.522 c -7.143,-7.149 -11.152,-16.837 -11.152,-26.938 v -35.538 l 25.668,-25.668 z"
+       fill="white"
+       id="path14"
+       style="fill:#000000" />
+    <path
+       d="m 179.664,274.464 14.517,-14.522 c 7.142,-7.149 11.151,-16.837 11.151,-26.938 v -35.538 l -25.668,-25.668 z"
+       fill="white"
+       id="path16"
+       style="fill:#000000" />
+    <path
+       d="m 128.335,17.7706 12.19,-12.19025 c 7.441,-7.44047 19.504,-7.44047 26.944,0 l 12.19,12.19025 h -51.33 z"
+       fill="white"
+       id="path18"
+       style="fill:#000000" />
+    <path
+       d="m 231,69.1246 12.19,-12.1902 c 7.441,-7.4405 19.504,-7.4405 26.944,0 l 12.19,12.1902 h -51.33 z"
+       fill="white"
+       id="path20"
+       style="fill:#000000" />
+    <path
+       d="m 179.665,274.464 -12.19,12.19 c -7.441,7.441 -19.503,7.441 -26.944,0 l -12.19,-12.19 h 51.33 z"
+       fill="white"
+       id="path22"
+       style="fill:#000000" />
+    <path
+       d="m 282.331,223.133 -12.19,12.191 c -7.441,7.44 -19.503,7.44 -26.944,0 l -12.19,-12.191 h 51.33 z"
+       fill="white"
+       id="path24"
+       style="fill:#000000" />
+    <path
+       d="m 282.332,69.1248 14.517,14.5225 C 303.991,90.7963 308,100.484 308,110.585 v 71.094 c 0,10.107 -4.015,19.801 -11.164,26.944 l -14.504,14.504 z"
+       fill="white"
+       id="path26"
+       style="fill:#000000" />
+    <path
+       d="M 76.9998,69.1246 64.8096,56.9344 c -7.4405,-7.4405 -19.5031,-7.4405 -26.9436,0 L 25.6758,69.1246 h 51.3301 z"
+       fill="white"
+       id="path28"
+       style="fill:#000000" />
+    <path
+       d="m 25.668,223.133 12.1902,12.191 c 7.4405,7.44 19.5031,7.44 26.9436,0 L 76.992,223.133 Z"
+       fill="white"
+       id="path30"
+       style="fill:#000000" />
+    <path
+       d="m 76.9984,248.795 v 17.772 c -4.8712,0 -9.7546,-1.858 -13.4779,-5.581 L 51.3242,248.789 h 25.6681 z"
+       fill="white"
+       id="path32"
+       style="fill:#000000" />
+    <path
+       d="M 25.6681,69.1248 11.1516,83.6473 C 4.00874,90.7963 0,100.484 0,110.585 v 71.094 c 0,10.107 4.01482,19.801 11.1637,26.944 l 14.5044,14.504 z"
+       fill="white"
+       id="path34"
+       style="fill:#000000" />
+  </g>
+  <metadata
+     id="metadata287">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:title>Q30</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+</svg>

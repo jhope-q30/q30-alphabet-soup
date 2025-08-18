@@ -1,0 +1,28 @@
+{{- $currentPage := . -}}
+<nav id="{{ site.Params.styles.site_navigation }}" class="{{ site.Params.styles.menu_toggles }}">
+    <div class="{{ site.Params.styles.menu_container }}">
+        <ul id="{{ site.Params.styles.primary_menu }}">
+            {{- range site.Menus.main }}
+            <!-- ( menu class ) -->
+            {{- $li_class := site.Params.styles.menu_item -}}
+            <!-- ( if menu section/item is active ) -->
+            {{- if or ( $currentPage.IsMenuCurrent "main" . ) ( $currentPage.HasMenuCurrent "main" . ) ( eq $currentPage.Section .Identifier ) -}}
+                {{- $li_class = print $li_class " active" -}}
+            {{- end -}}
+            <!-- ( class params passed from menu ) -->
+            {{- range $k, $v := .Params -}}
+                {{- $li_class = print $li_class " " $k "-" $v -}}
+            {{- end -}}
+            <li class="{{ $li_class }}"><a href="{{ .URL | relLangURL }}">{{ .Name | safeHTML }}</a></li>
+            {{- end }}
+            <!-- ( motion toggle ) -->
+            <li class="{{ site.Params.styles.menu_item }}">
+                <div class="{{ site.Params.styles.has_motion }}-toggle">
+                    <input type="checkbox" id="{{ site.Params.styles.has_motion }}" name="{{ site.Params.styles.has_motion }}" tabindex="0">
+                    <label for="{{ site.Params.styles.has_motion }}"><span>{{ i18n "reduceMotion" }}</span></label>
+                </div>
+            </li>
+            <!-- / ( motion toggle ) -->
+        </ul>
+    </div>
+</nav>

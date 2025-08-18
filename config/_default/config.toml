@@ -1,0 +1,7 @@
+baseURL = '/'
+languageCode = 'en-us'
+title = 'Alphabet Soup'
+enableGitInfo = true
+
+[params]
+    favicon="favicon.ico"

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.Language }}">
+{{- $currentPage := . -}}
+{{- partial "head" . }}
+{{- $section := "" -}}
+{{- if ne .Section $section -}}
+    {{- $section = print " " .Section -}}
+{{- end -}}
+<body class="{{ .Kind }}{{ $section }}">
+<!-- ( site header ) -->
+{{- partial "header" . }}
+<!-- / ( site header ) -->
+<!-- ( main ) -->
+<main id="{{ site.Params.styles.main_id }}">
+    {{- block "main" . }}{{ end }}
+</main>
+<!-- / ( main ) -->
+<!-- ( site footer ) -->
+{{- partial "footer/site" . }}
+<!-- / ( site footer ) -->
+<!-- ( script ) -->
+{{- partial "footer/javascript" . }}
+<!-- / ( script ) -->
+</body>
+</html>

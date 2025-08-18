@@ -1,0 +1,21 @@
+[styles]
+# header/navigation
+site_header = "site-header"
+site_header_main = "site-header-main"
+site_navigation = "site-navigation"
+sticky_header = "sticky-header"
+primary_menu = "primary-menu"
+menu_container = "menu-container"
+menu_item = "menu-item"
+menu_toggle = "menu-toggle"
+menu_toggles = "menu-toggles"
+menu_open = "menu-open"
+menu_fade = "menu-fade"
+mobile_primary = "mobile-primary"
+mobile_secondary = "mobile-secondary"
+# animation
+is_animated = "is-animated"
+ani = "ani"
+has_motion = "has-motion"
+# main
+main_id = "main"

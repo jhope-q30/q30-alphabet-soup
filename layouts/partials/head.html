@@ -1,0 +1,29 @@
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+{{ with .Description }}<meta name="description" content="{{ . }}">{{ end }}
+{{ with .Keywords }}<meta name="keywords" content="{{ delimit . ", " }}">{{ end }}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="/css/normalize.css" rel="stylesheet">
+{{- with resources.Get "sass/default.scss" | toCSS (
+    dict 
+        "transpiler" "dartsass" 
+        "targetPath" "css/default.css" 
+        "enableSourceMap" hugo.IsDevelopment 
+        "outputStyle" ( cond hugo.IsDevelopment "expanded" "compressed" ) 
+        "vars" site.Params.styles 
+        "silenceDeprecations" ( slice "import" "global-builtin" )
+) | minify | fingerprint }}
+<link href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous" rel="stylesheet">
+{{- end }}
+
+<title>
+    {{- if .IsHome -}}
+    {{- .Site.Title | safeHTML -}}
+    {{- else -}}
+    {{- print .Site.Title " | " .Title | safeHTML -}}
+    {{- end -}}
+</title>
+</head>
