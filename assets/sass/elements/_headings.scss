@@ -1,0 +1,47 @@
+@use "abstracts/variables" as v;
+@use "functions" as func;
+
+@mixin heading {
+    --#{v.$prefix}margin-top: 0;
+    --#{v.$prefix}margin-bottom: #{ v.$headings-margin-bottom };
+    --#{v.$prefix}font-size: 1em;
+    --#{v.$prefix}font-weight: normal;
+    --#{v.$prefix}line-height: #{ map-get( v.$line-height, 'normal' ) };
+    margin-left:0;
+    margin-right:0;
+    margin-top: var( --#{v.$prefix}margin-top );
+    margin-bottom: var( --#{v.$prefix}margin-bottom );
+    font-size:var( --#{v.$prefix}font-size );
+    font-weight:var( --#{v.$prefix}font-weight );
+    line-height:var( --#{v.$prefix}line-height );
+    color:var( --#{v.$prefix}text-color );
+    font-family: v.$headings-font-family;
+    letter-spacing: -0.025em;
+    font-feature-settings: 'pnum' on, 'onum' on, 'ordn' on;
+}
+
+h1, h2, h3, h4, h5 { @include heading(); }
+
+h1, .h1 {
+    --#{v.$prefix}font-weight: #{ map-get( v.$font-weight, 'thin' ) };
+    --#{v.$prefix}line-height: #{ map-get( v.$line-height, 'tiny' ) };
+    --#{v.$prefix}font-size: #{ func.textClamp( #{ map-get( v.$font-size, 'h2' ) }, #{ map-get( v.$font-size, 'h1' ) } ) };
+}
+h2, .h2, .has-h2 > * {
+    --#{v.$prefix}font-weight: #{ map-get( v.$font-weight, 'extra-light' ) };
+    --#{v.$prefix}line-height: #{ map-get( v.$line-height, 'small' ) };
+    --#{v.$prefix}font-size: #{ func.textClamp( #{ map-get( v.$font-size, 'h3' ) }, #{ map-get( v.$font-size, 'h2' ) } ) };
+}
+h3, .h3, .has-h3 > * {
+    --#{v.$prefix}font-weight: #{ map-get( v.$font-weight, 'extra-light' ) };
+    --#{v.$prefix}line-height: #{ map-get( v.$line-height, 'normal' ) };
+    --#{v.$prefix}font-size: #{ func.textClamp( #{ map-get( v.$font-size, 'h4' ) }, #{ map-get( v.$font-size, 'h3' ) } ) };
+}
+h4, .h4 {
+    --#{v.$prefix}font-size: #{ map-get( v.$font-size, 'h4' ) };
+    --#{v.$prefix}font-weight: #{ map-get( v.$font-weight, 'normal' ) };
+}
+h5, .h5 {
+    --#{v.$prefix}font-size: #{ map-get( v.$font-size, 'h5' ) };
+    --#{v.$prefix}font-weight: #{ map-get( v.$font-weight, 'medium' ) };
+}

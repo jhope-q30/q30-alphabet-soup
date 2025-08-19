@@ -1,0 +1,20 @@
+@use "abstracts/variables" as v;
+
+html { scroll-behavior: smooth; }
+
+body {
+
+    --#{v.$page_gutter_x}: #{ map-get( v.$pageGutters, 'mobile' ) };
+
+    font-family: #{ v.$font-family };
+    background-color: var( --#{v.$prefix}body-background-color );
+    color: var( --#{v.$prefix}text-color );
+    box-sizing: border-box;
+    overflow-anchor: none;
+
+    @media screen and ( min-width: #{ map-get( v.$breakpoints, "mobile" ) } ) { --#{v.$page_gutter_x}: #{ map-get( v.$pageGutters, "desktop" ) }; }
+
+    *, *:after, *:before { box-sizing: inherit; }
+
+}
+

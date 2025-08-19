@@ -1,0 +1,7 @@
+@use "abstracts/variables" as v;
+
+##{v.$main_id} {
+
+    background-color:var( --#{v.$prefix}body-background-color );
+
+}

@@ -1,0 +1,42 @@
+@use "functions" as func;
+
+$font-family: 'Public Sans', sans-serif !default;
+$headings-font-family: $font-family !default;
+$headings-margin-bottom: func.px2em( 12 ) !default;
+$paragraph-margin-bottom: func.px2em( 12 ) !default;
+
+$font-size: (
+    "tiny": func.px2em( 12 ),
+    "small": func.px2em( 14 ),
+    "normal": func.px2em( 18 ),
+    "large": func.px2em( 24 ),
+    "extra-large": func.px2em( 40 ),
+    "lead": func.px2em( 30 ),
+    "h1": func.px2em( 110 ),
+    "h2": func.px2em( 58 ),
+    "h3": func.px2em( 40 ),
+    "h4": func.px2em( 24 ),
+    "h5": func.px2em( 18 ),
+    "nav": func.px2em( 16 ),
+    "service": func.px2em( 26 ),
+    "stat": func.px2em( 70 ),
+);
+
+$font-weight: (
+    "thin": 100,
+    "extra-light": 200,
+    "light": 300,
+    "normal": 400,
+    "medium": 500,
+    "semibold": 600,
+    "bold": 700,
+);
+
+$line-height: (
+    "tiny": 1.1,
+    "small": 1.2,
+    "medium": 1.3,
+    "normal": 1.4,
+    "large": 1.5,
+    "extra-large": 1.6,
+);

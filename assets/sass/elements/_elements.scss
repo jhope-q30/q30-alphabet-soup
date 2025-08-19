@@ -1,0 +1,14 @@
+@forward "headings";
+@forward "text";
+@forward "link";
+@forward "button";
+@forward "img";
+@forward "form";
+
+@use "list";
+@use "blockquote";
+@use "figure";
+@use "hr";
+@use "details";
+@use "iframe";
+@use "picture";

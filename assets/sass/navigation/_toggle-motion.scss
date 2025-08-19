@@ -1,0 +1,115 @@
+@use "abstracts/variables" as v;
+@use "navigation/navigation";
+@use "transition";
+
+.#{v.$has_motion}-toggle {
+    
+    --#{v.$prefix}width: #{ map-get( v.$spacing, 'xl' ) };
+    --#{v.$prefix}height: #{ map-get( v.$spacing, 'md' ) };
+    --#{v.$prefix}off: var( --#{v.$prefix}color-soft-grey );
+    --#{v.$prefix}on: var( --#{v.$prefix}color-charcoal );
+
+    position: relative;
+    display: inline-block;
+    margin-top:#{ map-get( v.$gutters, 'sm' ) };
+    padding-right:var( --#{v.$prefix}width );
+
+    @media screen and ( min-width: #{ map-get( v.$breakpoints, "mobile" ) } ) {
+
+        @include transition.x-transition( padding );
+
+        display: flex;
+        align-items:flex-start;
+        margin-top:0;
+        padding-top:var( --#{v.$prefix}padding-top );
+        padding-bottom:var( --#{v.$prefix}padding-bottom );
+
+    }
+
+    > input[type="checkbox"] {
+
+        position: absolute;
+        margin: -1px;
+        padding: 0;
+        border: 0;
+        width: 1px;
+        height: 1px;
+        opacity: 0;
+        overflow: hidden;
+
+    }
+
+    > input[type="checkbox"] ~ label {
+
+        $top: calc( 50% - ( ( var( --#{v.$prefix}height ) / 2 ) + 3px ) );
+
+        cursor: pointer;
+
+        &::before {
+
+            position:absolute;
+            content:" ";
+            top: #{ $top };
+            right: 0;
+            width: var( --#{v.$prefix}width );
+            height: var( --#{v.$prefix}height );
+            border: 0;
+            border-radius: calc( var( --#{v.$prefix}height ) / 2 );
+            background-color: var( --#{v.$prefix}off );
+
+            @include transition.x-transition( $t: background-color );
+
+        }
+        &::after {
+
+            position:absolute;
+            content: " ";
+            
+            right:calc( var( --#{v.$prefix}width ) - var( --#{v.$prefix}height ) );
+            top: #{ $top };
+            width: var( --#{v.$prefix}height );
+            height: var( --#{v.$prefix}height );
+            background-color: var( --#{v.$prefix}on );
+            border-radius: 100%;
+            box-shadow: 0 0 1px 1px rgba( 0, 0, 0, 0.4 );
+
+            $props:right, background-color;
+            @include transition.x-transition( $t: $props );
+
+        }
+
+        > span {
+            
+            @include navigation.navlink();
+
+            --#{v.$prefix}margin-left: #{ map-get( v.$spacing, 'lg' ) };
+            --#{v.$prefix}margin-right: #{ map-get( v.$spacing, 'sm' ) };
+        
+        }
+
+    }
+    > input[type="checkbox"]:focus ~ label {
+
+        > span {
+
+            --#{v.$prefix}background-color:var( --#{v.$prefix}color-black );
+            --#{v.$prefix}background-width:100%;
+
+            outline:var( --#{v.$prefix}outline );
+            
+        }
+
+    }
+    > input[type="checkbox"]:checked ~ label {
+
+        &::before { background-color: var( --#{v.$prefix}on ); }
+        &::after {
+
+            right:0;
+            background-color: var( --#{v.$prefix}off );
+
+        }
+
+    }
+
+}

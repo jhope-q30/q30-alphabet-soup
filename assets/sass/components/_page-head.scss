@@ -1,0 +1,48 @@
+@use "abstracts/variables" as v;
+@use "elements/text";
+@use "functions" as func;
+
+##{v.$main_id}{
+
+    .#{v.$page_head}{
+
+        --#{v.$prefix}padding-top: #{ map-get( v.$gutters, 'md' ) };
+        --#{v.$prefix}padding-bottom: #{ map-get( v.$gutters, 'lg' ) };
+
+        padding-top:var( --#{v.$prefix}padding-top );
+        padding-bottom:var( --#{v.$prefix}padding-bottom );
+
+        @media screen and ( min-width: #{ map-get( v.$breakpoints, "mobile" ) } ) { 
+
+            --#{v.$prefix}padding-top: #{ map-get( v.$gutters, 'lg' ) };
+            --#{v.$prefix}padding-bottom: #{ map-get( v.$gutters, 'xl' ) };
+
+        }
+
+        &.no-pad-top { --#{v.$prefix}padding-top:0; }
+        &.no-pad-bottom { --#{v.$prefix}padding-bottom:0; }
+        
+        /** back button */
+        a.backto {
+
+            --#{v.$prefix}margin-top: #{ map-get( v.$gutters, 'lg' ) };
+            --#{v.$prefix}margin-bottom: #{ map-get( v.$gutters, 'lg' ) };
+
+            margin-top:var( --#{v.$prefix}margin-top );
+            margin-bottom:var( --#{v.$prefix}margin-bottom );
+
+        }
+        /** thumbnail */
+        .thumbnail {
+
+            --#{v.$prefix}padding-bottom: #{ map-get( v.$spacing, 'md' ) };
+
+            padding-bottom:var( --#{v.$prefix}padding-bottom );
+
+            @media screen and ( min-width: #{ map-get( v.$breakpoints, "mobile" ) } ) { --#{v.$prefix}padding-bottom: 0; }
+
+        }
+
+    }
+
+}

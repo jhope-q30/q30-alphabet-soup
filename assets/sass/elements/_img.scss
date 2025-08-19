@@ -1,0 +1,58 @@
+@use "abstracts/variables" as v;
+
+@mixin img(){
+
+    --#{v.$prefix}margin-top: 0;
+    --#{v.$prefix}margin-bottom: 0;
+    --#{v.$prefix}margin-left: 0;
+    --#{v.$prefix}margin-right: 0;
+    --#{v.$prefix}padding-top: 0;
+    --#{v.$prefix}padding-bottom: 0;
+    --#{v.$prefix}padding-left: 0;
+    --#{v.$prefix}padding-right: 0;
+    --#{v.$prefix}border-radius: 0;
+    --#{v.$prefix}display: block;
+
+    margin-left:var( --#{v.$prefix}margin-left );
+    margin-right:var( --#{v.$prefix}margin-right );
+    margin-top:var( --#{v.$prefix}margin-top );
+    margin-bottom:var( --#{v.$prefix}margin-bottom );
+    padding-left:var( --#{v.$prefix}padding-left );
+    padding-right:var( --#{v.$prefix}padding-right );
+    padding-top:var( --#{v.$prefix}padding-top );
+    padding-bottom:var( --#{v.$prefix}padding-bottom );
+    border-radius:var( --#{v.$prefix}border-radius );
+    width:100%;
+    height:auto;
+    max-width:100%;
+    display:var( --#{v.$prefix}display );
+
+}
+
+/// hide gif with no motion
+body {
+
+    &:not( .#{v.$has_motion} ) {
+    
+        ##{v.$main_id}{
+
+            img[src*="gif"] { --#{v.$prefix}display:none; }
+            img.#{v.$has_motion}-fallback { --#{v.$prefix}display:block; }
+
+        }
+
+    }
+
+}
+
+// default
+##{v.$main_id}{
+    img:not([width],[height]),
+    img.#{v.$has_motion}-fallback,
+    img.image-responsive {
+        @include img();
+        &.image-rounded { --#{v.$prefix}border-radius:var( --#{v.$prefix}image-border-radius ); }
+    }
+    img.#{v.$has_motion}-fallback { --#{v.$prefix}display:none; }
+    .images-rounded { img { --#{v.$prefix}border-radius:var( --#{v.$prefix}image-border-radius ); } }
+}

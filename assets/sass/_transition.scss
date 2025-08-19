@@ -1,0 +1,12 @@
+@use "abstracts/variables" as v;
+
+body {
+    &.#{v.$has_motion} { --#{v.$prefix}duration: #{ map-get( v.$duration, 'xs' ) }; }
+    &:not( .#{v.$has_motion} ) { --#{v.$prefix}duration: 0 !important; }
+}
+
+@mixin x-transition( $t: $transition, $e: ease-out ){
+    transition-property: $t;
+    transition-duration: var( --#{v.$prefix}duration );
+    transition-timing-function: $e;
+}

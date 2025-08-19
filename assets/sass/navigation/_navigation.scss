@@ -1,0 +1,234 @@
+@use "abstracts/variables" as v;
+@use "mixins";
+@use "transition";
+
+@mixin navlink {
+
+    --#{v.$prefix}menu-x: #{ map-get( v.$gutters, 'sm' ) };
+    --#{v.$prefix}menu-y: #{ map-get( v.$gutters, 'lg' ) };
+    --#{v.$prefix}color: var( --#{v.$prefix}text-color );
+    --#{v.$prefix}font-size: 1em;
+    --#{v.$prefix}font-weight: #{ map-get( v.$font-weight, 'nav' ) };
+    --#{v.$prefix}margin-top: 0;
+    --#{v.$prefix}margin-right: 0;
+    --#{v.$prefix}margin-bottom: 0;
+    --#{v.$prefix}margin-left: 0;
+    --#{v.$prefix}padding-top: 0;
+    --#{v.$prefix}padding-right: 0;
+    --#{v.$prefix}padding-bottom: 0;
+    --#{v.$prefix}padding-left: 0;
+    --#{v.$prefix}background-color: transparent;
+    --#{v.$prefix}background-width: 0;
+    --#{v.$prefix}text-decoration: none;
+    --#{v.$prefix}display: block;
+
+    margin:var( --#{v.$prefix}margin-top ) var( --#{v.$prefix}margin-right ) var( --#{v.$prefix}margin-bottom ) var( --#{v.$prefix}margin-left );
+    padding:var( --#{v.$prefix}padding-top ) var( --#{v.$prefix}padding-right ) var( --#{v.$prefix}padding-bottom ) var( --#{v.$prefix}padding-left );
+    font-size:var( --#{v.$prefix}font-size );
+    font-weight:var( --#{v.$prefix}font-weight );
+    color:var( --#{v.$prefix}color );
+    text-decoration:var( --#{v.$prefix}text-decoration );
+    display:var( --#{v.$prefix}display );
+
+    &::after {
+        
+        $props: background-color, width;
+        @include transition.x-transition( $t:$props );
+        display:block;
+        margin-top:5px;
+        width:var( --#{v.$prefix}background-width );
+        height:1px;
+        left:0;
+        content:" ";
+        background-color:var( --#{v.$prefix}background-color );
+
+    }
+
+    @include mixins.on-event {
+
+        --#{v.$prefix}background-color:var( --#{v.$prefix}color-black );
+        --#{v.$prefix}background-width:100%;
+
+    }
+
+}
+
+/// navigation open, change body scroll
+body {
+    &.#{v.$menu_fade} {
+        height:100%;
+        overflow:hidden;
+    }
+}
+
+##{v.$site_header} {
+
+    nav##{v.$site_navigation} {
+
+        --#{v.$prefix}position: relative;
+        --#{v.$prefix}background-color: transparent;
+        --#{v.$prefix}width: auto;
+        --#{v.$prefix}height: auto;
+        --#{v.$prefix}opacity: 1;
+
+        position:var( --#{v.$prefix}position );
+        background-color:var( --#{v.$prefix}background-color );
+        width:var( --#{v.$prefix}width );
+        height:var( --#{v.$prefix}height );
+        opacity:var( --#{v.$prefix}opacity );
+        top:0;
+        left:0;
+        z-index:1;
+
+        .#{v.$menu_container} {
+
+            ul##{v.$primary_menu} {
+
+                --#{v.$prefix}column-gap: 0;
+                --#{v.$prefix}border-top: unset;
+                --#{v.$prefix}padding-top: 0;
+                --#{v.$prefix}padding-bottom: 0;
+        
+                @include mixins.reset-element( $d:flex );
+
+                font-size:1em;
+                flex-wrap:wrap;
+                align-items:flex-start;
+                column-gap:var( --#{v.$prefix}column-gap );
+                border-top:var( --#{v.$prefix}border-top );
+                padding-top:var( --#{v.$prefix}padding-top );
+                padding-bottom:var( --#{v.$prefix}padding-bottom );
+
+                > li.#{v.$menu_item} {
+
+                    --#{v.$prefix}list-size: #{ map-get( v.$font-size, 'nav' ) };
+                    --#{v.$prefix}width: auto;
+                    --#{v.$prefix}padding-top: 0;
+                    --#{v.$prefix}padding-bottom: 0;
+                    --#{v.$prefix}display: block;
+                    
+                    @include mixins.reset-element();
+
+                    flex-shrink:0;
+                    flex-grow:1;
+                    font-size:var( --#{v.$prefix}list-size );
+                    width:var( --#{v.$prefix}width );
+                    padding-top:var( --#{v.$prefix}padding-top );
+                    padding-bottom:var( --#{v.$prefix}padding-bottom );
+                    display:var( --#{v.$prefix}display );
+
+                    > a { @include navlink(); }
+
+                    &.active {
+    
+                        > a {
+
+                            --#{v.$prefix}background-color:var( --#{v.$prefix}color-black );
+                            --#{v.$prefix}background-width:100%;
+
+                        }
+
+                    }
+                
+                }
+            
+            }
+
+        }
+
+        /** get/set padding from parent ( assets/sass/_header.scss ) */
+        @media screen and ( min-width: #{ map-get( v.$breakpoints, "mobile" ) } ) {
+            
+            @include transition.x-transition( padding );
+
+            display:block;
+            padding-top:var( --#{v.$prefix}padding-top );
+            padding-bottom:var( --#{v.$prefix}padding-bottom );
+
+            .#{v.$menu_container} {
+
+                ul##{v.$primary_menu} {
+
+                    --#{v.$prefix}column-gap: #{ map-get( v.$spacing, 'md' ) };
+
+                    li.#{v.$menu_item} {
+
+                        &.default-none { --#{v.$prefix}display:none; } /// do not show on desktop view
+
+                    }
+
+                }
+
+            }
+
+        }
+        @media screen and ( max-width: #{ map-get( v.$breakpoints, "mobile" ) - 1px } ) { /// breakpoint for small screen/nav
+
+            --#{v.$prefix}position:absolute;
+            --#{v.$prefix}min-width:#{ map-get( v.$widths, 'xs' ) };
+            --#{v.$prefix}height:auto;
+            --#{v.$prefix}box-shadow:0px 0px 0px 0 rgba( 0, 0, 0, 0.2 );
+            --#{v.$prefix}opacity:0;
+            --#{v.$prefix}background-color: var( --#{v.$prefix}body-background-color );
+
+            $props: left, opacity, box-shadow;
+            @include transition.x-transition( $t: $props );
+
+            display:none;
+            top:100%;
+            left:-200%;
+            box-shadow:var( --#{v.$prefix}box-shadow );
+
+            /** Landscape */
+            @media screen and ( orientation: landscape ) { overflow:auto; }
+
+            .#{v.$menu_container} {
+                
+                ul##{v.$primary_menu} {
+
+                    --#{v.$prefix}border-top: 1px solid rgba( 0, 0, 0, 0.2 );
+                    --#{v.$prefix}padding-top: #{ map-get( v.$gutters, 'md' ) };
+
+                    li.#{v.$mobile_primary} {
+
+                        --#{v.$prefix}width:100%;
+                        --#{v.$prefix}padding-bottom: 1px;
+                        --#{v.$prefix}list-size: #{ map-get( v.$font-size, 'service' ) };
+
+                        > a {
+
+                            --#{v.$prefix}margin-top:#{ map-get( v.$gutters, 'xs' ) };
+                            --#{v.$prefix}margin-left:#{ map-get( v.$gutters, 'md' ) };
+                            --#{v.$prefix}margin-bottom:#{ map-get( v.$gutters, 'xs' ) };
+                            --#{v.$prefix}margin-right:#{ map-get( v.$gutters, 'md' ) };
+                            --#{v.$prefix}display:inline-block;
+
+                        }
+
+                    }
+
+                }
+
+            }
+
+            &.#{v.$menu_open} { /// class that opens the overtake menu, but does not display it visually
+
+                display:block;
+
+            }
+            &.#{v.$menu_fade} { /// class that animates the overtake menu, and displays it visually
+
+                --#{v.$prefix}opacity: 1;
+                --#{v.$prefix}box-shadow:2px 2px 2px 0 rgba( 0, 0, 0, 0.2 );
+
+                left:0;
+                
+                .#{v.$menu_container} { ul##{v.$primary_menu} { li.#{v.$mobile_primary} { --#{v.$prefix}display:block; } } }
+
+            }
+
+        }
+
+    }
+
+}

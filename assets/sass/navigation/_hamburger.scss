@@ -1,0 +1,111 @@
+@use "abstracts/variables" as v;
+@use "mixins";
+@use "transition";
+
+$width: 20px;
+$height: 16px;
+$offset: 6px;
+$bar_height: 2px;
+
+##{v.$site_header} { /// mobile menu button toggle
+
+    .#{v.$site_header_main}{
+
+        > button##{v.$menu_toggle} {
+
+            --#{v.$prefix}hamburger-color: var( --#{v.$prefix}color-charcoal );
+            --#{v.$prefix}hamburger-width: #{ $width };
+            --#{v.$prefix}margin-left: var( --#{v.$page_gutter_x} );
+
+            $props: width, margin-left;
+            @include transition.x-transition( $t: $props );
+            @include mixins.reset-default-btn();
+
+            margin:0 0 4px var( --#{v.$prefix}margin-left );
+            padding:0;
+            border:0;
+            order:0;
+            display:block;
+            cursor:pointer;
+            background:none;
+            width:var( --#{v.$prefix}hamburger-width );
+
+            @media screen and ( min-width: #{ map-get( v.$breakpoints, "mobile" ) } ) { 
+                
+                --#{v.$prefix}hamburger-width:0;
+                --#{v.$prefix}margin-left: calc( var( --#{v.$page_gutter_x} ) - var( --#{v.$prefix}column-gap ) );
+            
+            }
+
+            > span {
+
+                display:flex;
+                align-items:center;
+
+                span { @include transition.x-transition( all ); }
+
+                > span.hamburger {
+
+                    display:block;
+                    width: #{ $width };
+                    height: #{ $height };
+                    position: relative;
+                    margin:0;
+                    transform: rotate( 0deg );
+
+                    span {
+
+                        position: absolute;
+                        display: block;
+                        height: #{ $bar_height };
+                        width: 100%;
+                        background:var( --#{v.$prefix}hamburger-color );
+                        opacity: 1;
+                        left: 0;
+                        transform: rotate( 0deg );
+
+                        &:nth-child(1) { top: 0px; }
+                        &:nth-child(2),
+                        &:nth-child(3) { top: #{ $offset }; }
+                        &:nth-child(4) { top: #{ $offset * 2 }; }
+
+                    }
+
+                }
+
+            }
+
+            &[aria-expanded="true"] {
+                                
+                > span { 
+
+                    > span.hamburger {
+
+                        span {
+
+                            &:nth-child(1) {
+                                top: #{ $offset };
+                                width: 0%;
+                                left: 50%;
+                            }
+                            &:nth-child(2) { transform: rotate( 45deg ); }
+                            &:nth-child(3) { transform: rotate( -45deg ); }
+                            &:nth-child(4) {
+                                top: #{ $offset };
+                                width: 0%;
+                                left: 50%;
+                            }
+
+                        }
+                    
+                    }
+                
+                }
+                
+            }
+
+        }
+
+    }
+
+}

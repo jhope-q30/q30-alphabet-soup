@@ -1,0 +1,19 @@
+$width-xs: 300px !default;
+$width-sm: 540px !default;
+$width-md: 720px !default;
+$width-lg: 960px !default;
+$width-xl: 1140px !default;
+$width-xxl: 1320px !default;
+$max-width: 1440px !default;
+
+/// widths
+$widths: (
+    "xs": $width-xs,
+    "sm": $width-sm,
+    "md": $width-md,
+    "lg": $width-lg,
+    "xl": $width-xl,
+    "xxl": $width-xxl,
+    "xxxl": $max-width,
+    "huge": 2560px
+);

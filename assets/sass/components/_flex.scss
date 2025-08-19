@@ -1,0 +1,24 @@
+@use "abstracts/variables" as v;
+
+.#{v.$prefix}flex {
+
+    --#{v.$prefix}column-gap: #{ map-get( v.$gutters, 'md' ) };
+    --#{v.$prefix}row-gap: #{ map-get( v.$gutters, 'md' ) };
+    --#{v.$prefix}justify-content: center;
+
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:var( --#{v.$prefix}justify-content );
+    column-gap:var( --#{v.$prefix}column-gap );
+    row-gap:var( --#{v.$prefix}row-gap );
+
+    > * { 
+        
+        flex-grow:0;
+        flex-shrink:1;
+    
+    }
+
+    &-image-group { --#{v.$prefix}column-gap: #{ map-get( v.$gutters, 'xl' ) }; }
+
+}

@@ -1,0 +1,66 @@
+@use "abstracts/variables" as v;
+@use "button";
+@use "mixins";
+
+@mixin input-el() {
+    display:block;
+    margin:#{ map-get( v.$spacing, 'xs' ) } 0;
+    padding:#{ map-get( v.$spacing, 'sm' ) };
+    font-size:#{ map-get( v.$font-size, 'normal' ) };
+    border:1px solid #{ map-get( v.$colors, 'charcoal' ) };
+    background:#{ map-get( v.$colors, 'white' ) };
+    width:100%;
+    box-sizing:border-box;
+}
+
+.#{v.$prefix}form {
+
+    form,
+    fieldset { 
+        
+        @include mixins.reset-element();
+
+        box-sizing:border-box;
+    
+    }
+
+    legend,
+    label {
+
+        margin:0;
+        padding:#{ map-get( v.$spacing, 'xs' ) } 0;
+        display:block;
+
+    }
+
+    input {
+
+        &[type="date"],
+        &[type="file"],
+        &[type="datetime"],
+        &[type="datetime-local"],
+        &[type="email"],
+        &[type="month"],
+        &[type="number"],
+        &[type="password"],
+        &[type="range"],
+        &[type="search"],
+        &[type="tel"],
+        &[type="text"],
+        &[type="time"],
+        &[type="url"],
+        &[type="week"] { @include input-el(); }
+
+    }
+
+    button[type="submit"] { cursor: pointer; }
+
+    textarea {
+
+        @include input-el();
+
+        min-height:240px;
+
+    }
+
+}

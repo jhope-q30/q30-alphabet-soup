@@ -1,0 +1,99 @@
+@use "abstracts/variables" as v;
+@use "elements/link";
+@use "mixins";
+@use "transition";
+@use "functions" as func;
+
+##{v.$main_id}{
+
+    .#{v.$hero}{
+
+        padding-top:var( --#{v.$prefix}padding-top );
+        padding-bottom:var( --#{v.$prefix}padding-bottom );
+
+        --#{v.$prefix}padding-top: #{ map-get( v.$gutters, 'xl' ) };
+        --#{v.$prefix}padding-bottom: #{ map-get( v.$gutters, 'xl' ) };
+
+        @media screen and ( min-width: #{ map-get( v.$breakpoints, "mobile" ) } ) { 
+
+            --#{v.$prefix}padding-top: #{ map-get( v.$gutters, 'xxl' ) };
+            --#{v.$prefix}padding-bottom: #{ map-get( v.$gutters, 'xxl' ) };
+
+        }
+
+        .thumbnail { 
+            
+            margin-bottom:map-get( v.$spacing, 'lg' );
+            border-radius:var( --#{v.$prefix}image-border-radius );
+            display:block;
+        
+        }
+        .content {
+
+            --#{v.$prefix}padding-top: 0;
+            --#{v.$prefix}padding-bottom: #{ map-get( v.$spacing, 'md' ) };
+
+            padding-bottom:var( --#{v.$prefix}padding-bottom );
+ 
+            .date,
+            .authors {
+
+                font-size:map-get( v.$font-size, 'normal' );
+
+                > span { display:block; }
+
+            }
+            .link-title {
+
+                --#{v.$prefix}font-size: #{ func.textClamp( #{ map-get( v.$font-size, 'extra-large' ) }, #{ map-get( v.$font-size, 'h3' ) } ) };
+                --#{v.$prefix}font-weight: #{ map-get( v.$font-weight, 'light' ) };
+
+            }
+
+            a {
+
+                text-decoration:none;
+                line-height:#{ map-get( v.$line-height, 'small' ) };
+
+            }
+
+        }
+
+        a.#{v.$hero}-link{
+    
+            text-decoration:none;
+
+            .content {
+
+                .date,
+                .authors { color:var( --#{v.$prefix}text-color ); }
+
+                .link-title {
+
+                    @include transition.x-transition( all );
+                    @include link.linkUnderline();
+
+                    --#{v.$prefix}link-underline-thickness: 2px;
+                    
+                    display:inline;
+
+                }
+
+            }
+            
+            @include mixins.on-event { 
+                
+                .content { 
+                    .link-title {
+                        --#{v.$prefix}link-background-position: -100% 100%;
+                        --#{v.$prefix}text-color: var( --#{v.$prefix}link-text-hover-color );
+                    }
+                }
+            
+            }
+    
+        }
+
+    }
+
+}

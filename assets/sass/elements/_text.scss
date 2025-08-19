@@ -1,0 +1,51 @@
+@use "functions" as func;
+@use "abstracts/variables" as v;
+
+@mixin paragraph {
+    --#{v.$prefix}margin-top: 0;
+    --#{v.$prefix}margin-bottom: #{ v.$headings-margin-bottom };
+    --#{v.$prefix}font-size: #{ map-get( v.$font-size, 'normal' ) };
+    --#{v.$prefix}font-weight: #{ map-get( v.$font-weight, 'normal' ) };
+    --#{v.$prefix}line-height: #{ map-get( v.$line-height, 'normal' ) };
+    margin-top: var( --#{v.$prefix}margin-top );
+    margin-bottom: var( --#{v.$prefix}margin-bottom );
+    font-size:var( --#{v.$prefix}font-size );
+    font-weight:var( --#{v.$prefix}font-weight );
+    line-height:var( --#{v.$prefix}line-height );
+    color: var( --#{v.$prefix}text-color );
+    font-family: v.$font-family;
+}
+
+p { @include paragraph(); }
+cite {
+    display:block;
+    font-size:0.55em;
+    font-style:normal;
+}
+small {
+    font-size:#{ map-get( v.$font-size, 'small' ) };
+    font-weight:#{ map-get( v.$font-weight, 'small' ) };
+    line-height:#{ map-get( v.$line-height, 'small' ) };
+}
+/// text wrapper classes
+.normal {
+    @include paragraph();
+    --#{v.$prefix}margin-bottom:0;
+}
+.lead,
+.extra-large {
+    > * {
+        --#{v.$prefix}font-size: 1em;
+        --#{v.$prefix}line-height: #{ map-get( v.$line-height, 'normal' ) };
+        --#{v.$prefix}font-weight: #{ map-get( v.$font-weight, 'light' ) };
+    }
+}
+.lead { font-size:#{ func.textClamp( #{ map-get( v.$font-size, 'h4' ) }, #{ map-get( v.$font-size, 'lead' ) } ) }; }
+.extra-large { font-size:#{ func.textClamp( #{ map-get( v.$font-size, 'large' ) }, #{ map-get( v.$font-size, 'extra-large' ) } ) }; }
+.stat {
+    > * {
+        --#{v.$prefix}font-size: 1em;
+        > span { font-size:#{ func.textClamp( #{ map-get( v.$font-size, 'lead' ) }, #{ map-get( v.$font-size, 'stat' ) } ) }; }
+    }
+}
+

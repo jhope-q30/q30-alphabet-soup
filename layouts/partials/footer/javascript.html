@@ -1,0 +1,1 @@
+{{- with resources.Get "js/navigation.js" | js.Build ( dict "targetPath" "/js/navigation.js" "minify" ( not hugo.IsDevelopment ) "params" site.Params.styles ) }}<script src="{{ .RelPermalink }}"></script>{{- end }}

@@ -1,0 +1,21 @@
+a.skip {
+    top:-1000px;
+    left:-1000px;
+    height:1px;
+    width:1px;
+    text-align:center;
+    overflow:hidden;
+    padding:0;
+    display:inline-block;
+    position:absolute;
+    color:black;
+    z-index:8888;
+    &:active,
+    &:focus {
+        left:calc( 50% - 100px );
+        top:0;
+        width:200px;
+        height:auto;
+        overflow:visible;
+    }
+}

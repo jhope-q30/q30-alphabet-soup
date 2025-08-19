@@ -6,7 +6,7 @@
 {{- if ne .Section $section -}}
     {{- $section = print " " .Section -}}
 {{- end -}}
-<body class="{{ .Kind }}{{ $section }}">
+<body class="{{ .Kind }}{{ $section }} {{ site.Params.styles.has_motion }}">
 <!-- ( site header ) -->
 {{- partial "header" . }}
 <!-- / ( site header ) -->

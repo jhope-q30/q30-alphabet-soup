@@ -1,0 +1,38 @@
+@use "abstracts/variables" as v;
+
+@mixin container( $d:block ){
+
+    --#{v.$prefix}padding-left: var( --#{v.$page_gutter_x} );
+    --#{v.$prefix}padding-right: var( --#{v.$page_gutter_x} );
+
+    display:$d;
+    margin:0 auto;
+    padding-left:var( --#{v.$prefix}padding-left );
+    padding-right:var( --#{v.$prefix}padding-right );
+	width:100%;
+	max-width:var( --#{v.$prefix}max-width );
+
+}
+
+.#{v.$container} {
+
+    @include container();
+
+    &-nopad { 
+        
+        --#{v.$prefix}padding-left: 0;
+        --#{v.$prefix}padding-right: 0;
+    
+    }
+    &-fluid { --#{v.$prefix}max-width:100%; }
+    @each $key, $value in v.$widths { &-#{$key} { --#{v.$prefix}max-width:$value; } }
+
+    /** nested */
+    [class^="#{v.$container}"] { 
+        
+        --#{v.$prefix}padding-left: 0;
+        --#{v.$prefix}padding-right: 0;
+    
+    }
+ 
+}

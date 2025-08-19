@@ -1,0 +1,115 @@
+@use "abstracts/variables" as v;
+
+[class*="#{v.$prefix}grid-"] {
+
+    width:100%;
+
+    > .#{v.$prefix}grid {
+
+        /** default gap */
+        $defaultGridGap: map-get( v.$gridgaps, 'large' );
+        --#{v.$prefix}column-gap: #{ map-get( $defaultGridGap, "column" ) };
+        --#{v.$prefix}row-gap: #{ map-get( $defaultGridGap, "row" ) };
+
+        grid-template-rows:auto;
+        grid-template-areas:var( --#{v.$prefix}grid-template-areas );
+        column-gap:var( --#{v.$prefix}column-gap );
+        row-gap:var( --#{v.$prefix}row-gap );
+        
+        /** grid gap(s) */
+        @each $key, $value in v.$gridgaps {
+            &.grid-gap-#{$key}{
+                --#{v.$prefix}column-gap: #{ map-get( $value, "column" ) };
+                --#{v.$prefix}row-gap: #{ map-get( $value, "row" ) };
+                @each $size, $breakpoint in v.$breakpoints {
+                    @media screen and ( min-width: #{ $breakpoint } ) {
+                        &-#{$size}{
+                            --#{v.$prefix}column-gap: #{ map-get( $value, "column" ) };
+                            --#{v.$prefix}row-gap: #{ map-get( $value, "row" ) };
+                        }
+                    }
+                }
+            }
+        }
+
+        /** grid position(s) */
+        $position: start, end, center, stretch;
+        @each $pos in $position {
+            &.align-#{$pos} { align-items:#{$pos}; }
+            &.justify-#{$pos} { justify-items:#{$pos}; }
+            .align-self-#{$pos} { align-self:#{$pos}; }
+            .justify-self-#{$pos} { justify-self:#{$pos}; }
+            @each $key, $value in v.$breakpoints {
+                @media screen and ( min-width: #{ $value } ) {
+                    &.align-#{$pos}-#{$key} { align-items:#{$pos}; }
+                    &.justify-#{$pos}-#{$key} { justify-items:#{$pos}; }
+                    .align-self-#{$pos}-#{$key} { align-self:#{$pos}; }
+                    .justify-self-#{$pos}-#{$key} { justify-self:#{$pos}; }
+                }
+            }
+        }
+        
+        /** grid span/start class(s) */
+        @for $i from 1 through 16 { 
+            .grid-span-#{$i} { 
+                grid-column-end: span #{$i};
+                @each $key, $value in v.$breakpoints {
+                    @media screen and ( min-width: #{ $value } ) { &-#{$key} { grid-column-end: span #{$i}; } }
+                }
+            }
+            .grid-start-#{$i} {
+                grid-column-start: #{$i};
+                @each $key, $value in v.$breakpoints {
+                    @media screen and ( min-width: #{ $value } ) { &-#{$key} { grid-column-start: #{$i}; } }
+                }
+            }
+        }
+
+        /** grid areas */
+        > .left { grid-area: left; }
+        > .right { grid-area: right; }
+
+
+    }
+
+}
+/** create grid layouts for multiple column options */
+@for $i from 1 through 16 { 
+    .#{v.$prefix}grid-#{$i} {
+        /** default */
+        > .#{v.$prefix}grid {
+            display:grid;
+            grid-template-columns: repeat( #{$i}, 1fr );
+        }
+        /** by breakpoint */
+        @each $key, $value in v.$breakpoints {
+            @media screen and ( min-width: #{ $value } ) {
+                &-#{$key} > .#{v.$prefix}grid {
+                    display:grid;
+                    grid-template-columns: repeat( #{$i}, 1fr );
+                }
+            }
+        }
+    }
+}
+
+/** grid box 4 */
+.#{v.$prefix}grid-box-4 {
+
+    > .#{v.$prefix}grid {
+
+        --#{v.$prefix}column-gap: #{ map-get( v.$gutters, 'sm' ) };
+        --#{v.$prefix}row-gap: 0;
+
+        display:grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows:1fr 1fr;
+        grid-auto-flow: row;
+        align-content: end;  
+
+        .grid-row-2 { grid-row: 1/3; }
+        .grid-self-end { grid-row: 1/3; }
+
+    }
+
+}

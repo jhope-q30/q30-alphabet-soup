@@ -1,10 +1,6 @@
 ---
 title: Home page
 linkTitle: Home
-menus:
-    main:
-        identifier: home
-        weight: 1
 ---
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer dapibus molestie luctus. Sed blandit tristique faucibus. In in nisi id odio congue ornare. Suspendisse eget magna congue justo rhoncus maximus eget lobortis nibh. Phasellus non sem a ante venenatis porttitor. Sed eget neque molestie, fringilla leo non, laoreet sapien. Curabitur nibh magna, mattis in dolor sed, faucibus condimentum nisi.

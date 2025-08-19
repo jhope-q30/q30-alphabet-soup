@@ -1,0 +1,60 @@
+@use "abstracts/variables" as v;
+@use "mixins";
+
+##{v.$main_id}{
+
+    figure {
+
+        --#{v.$prefix}padding-top: #{ map-get( v.$gutters, "lg" ) };
+        --#{v.$prefix}padding-bottom: #{ map-get( v.$gutters, "lg" ) };
+        --#{v.$prefix}padding-left: 0;
+        --#{v.$prefix}padding-right: 0;
+        --#{v.$prefix}caption-size: #{ map-get( v.$font-size, 'small' ) };
+
+        margin:0;
+        padding:var( --#{v.$prefix}padding-top ) var( --#{v.$prefix}padding-right ) var( --#{v.$prefix}padding-bottom ) var( --#{v.$prefix}padding-left );
+        display:block;
+
+        @media screen and ( min-width: #{ map-get( v.$breakpoints, "mobile" ) } ) { 
+            
+            --#{v.$prefix}padding-top: #{ map-get( v.$gutters, "xl" ) };
+            --#{v.$prefix}padding-bottom: #{ map-get( v.$gutters, "xl" ) };
+        
+        }
+
+        > img { --#{v.$prefix}margin-bottom: #{ map-get( v.$spacing, 'lg' ) }; }
+        > figcaption { 
+            
+            margin:#{ map-get( v.$spacing, 'sm' ) } 0;
+            font-size:var( --#{v.$prefix}caption-size );
+            color:var( --#{v.$prefix}text-color );
+        
+        }
+
+        > ul {
+
+            @include mixins.reset-element();
+
+            margin-bottom: #{ map-get( v.$spacing, 'xs' ) };
+
+            li { @include mixins.reset-element(); }
+
+        }
+
+    }
+
+}
+
+.work {
+
+    ##{v.$main_id}{
+
+        figure {
+
+            --#{v.$prefix}caption-size: #{ map-get( v.$font-size, 'h4' ) };
+
+        }
+
+    }    
+
+}

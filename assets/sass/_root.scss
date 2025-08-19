@@ -1,0 +1,49 @@
+@use "abstracts/variables" as v;
+
+:root {
+
+    --#{v.$prefix}body-background-color: #{ map-get( v.$colors, 'white' ) };
+    --#{v.$prefix}max-width: #{ v.$max-width };
+
+    --#{v.$prefix}text-color: #{ map-get( v.$colors, 'charcoal' ) };
+
+    --#{v.$prefix}link-text-color: #{ map-get( v.$colors, 'charcoal' ) };
+    --#{v.$prefix}link-text-hover-color: #{ map-get( v.$colors, 'pink-shade' ) };
+    --#{v.$prefix}link-text-active-color: #{ map-get( v.$colors, 'pink' ) };
+
+    --#{v.$prefix}outline: 1px solid #{ map-get( v.$colors, 'purple-shade' ) };
+
+    --#{v.$prefix}flood-color: #{ map-get( v.$colors, 'pink-shade' ) };
+    --#{v.$prefix}flood-text-color: #{ map-get( v.$colors, 'white' ) };
+    --#{v.$prefix}flood-background: linear-gradient( to right, transparent, transparent 50%, var( --#{v.$prefix}flood-color ) 50% );
+
+    --#{v.$prefix}gradient-color: #{ map-get( v.$colors, 'charcoal' ) };
+    --#{v.$prefix}gradient-duration: #{ map-get( v.$duration, "text" ) };
+
+    --#{v.$prefix}button-background: transparent;
+    --#{v.$prefix}button-background-hover: #{ map-get( v.$colors, 'pink-shade' ) };
+    --#{v.$prefix}button-background-active: #{ map-get( v.$colors, 'charcoal' ) };
+    --#{v.$prefix}button-text-color: #{ map-get( v.$colors, 'charcoal' ) };
+    --#{v.$prefix}button-text-hover-color: #{ map-get( v.$colors, 'white' ) };
+    --#{v.$prefix}button-text-active-color: #{ map-get( v.$colors, 'white' ) };
+    --#{v.$prefix}button-border-color: #{ map-get( v.$colors, 'charcoal' ) };
+    --#{v.$prefix}button-border-hover: #{ map-get( v.$colors, 'pink-shade' ) };
+    --#{v.$prefix}button-border-active: #{ map-get( v.$colors, 'charcoal' ) };
+    --#{v.$prefix}button-border-width: 1px;
+    --#{v.$prefix}button-border-style: solid;
+    --#{v.$prefix}button-border-radius: #{ map-get( v.$spacing, 'xl' ) };
+
+    --#{v.$prefix}svg-color: inherit;
+
+    --#{v.$prefix}image-border-radius: #{ map-get( v.$spacing, 'sm' ) };
+
+    --#{v.$prefix}border-width: 1px;
+    --#{v.$prefix}border-style: solid;
+    --#{v.$prefix}border-radius: #{ map-get( v.$spacing, 'sm' ) };
+    --#{v.$prefix}border-color: #{ map-get( v.$colors, 'charcoal' ) };
+
+    --#{v.$prefix}grid-template-areas: none;
+
+    @each $key, $value in v.$colors { --#{v.$prefix}color-#{$key}:#{$value}; }
+
+}

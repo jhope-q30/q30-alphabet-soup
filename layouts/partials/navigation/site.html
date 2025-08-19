@@ -15,14 +15,7 @@
             {{- end -}}
             <li class="{{ $li_class }}"><a href="{{ .URL | relLangURL }}">{{ .Name | safeHTML }}</a></li>
             {{- end }}
-            <!-- ( motion toggle ) -->
-            <li class="{{ site.Params.styles.menu_item }}">
-                <div class="{{ site.Params.styles.has_motion }}-toggle">
-                    <input type="checkbox" id="{{ site.Params.styles.has_motion }}" name="{{ site.Params.styles.has_motion }}" tabindex="0">
-                    <label for="{{ site.Params.styles.has_motion }}"><span>{{ i18n "reduceMotion" }}</span></label>
-                </div>
-            </li>
-            <!-- / ( motion toggle ) -->
+            {{- partial "navigation/motionToggle" . }}
         </ul>
     </div>
 </nav>

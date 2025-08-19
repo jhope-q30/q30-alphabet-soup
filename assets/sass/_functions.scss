@@ -1,0 +1,6 @@
+@use 'sass:math';
+@use 'sass:string';
+@use 'sass:list';
+@function px2em( $pixels, $context: 16 ) { @return #{ math.div( $pixels, $context ) }em; }
+@function nestedSize( $parent, $newSize ) { @return calc( 1em - ( #{ $parent } - #{ $newSize } ) ); }
+@function textClamp( $s1, $s2 ) { @return clamp( #{ $s1 }, calc( -0.875rem + 8.333vw ), #{ $s2 } ); }

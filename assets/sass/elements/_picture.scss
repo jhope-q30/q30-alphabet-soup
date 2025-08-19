@@ -1,0 +1,27 @@
+@use "abstracts/variables" as v;
+
+/// hide gif/motion with no motion
+body {
+
+    &:not( .#{v.$has_motion} ) {
+
+        picture {
+
+            &.#{v.$has_motion} { --#{v.$prefix}display:none; }
+            &.#{v.$has_motion}-fallback { --#{v.$prefix}display:block; }
+
+        }
+
+    }
+
+}
+
+picture {
+
+    --#{v.$prefix}display:block;
+
+    display:var( --#{v.$prefix}display );
+
+    &.#{v.$has_motion}-fallback { --#{v.$prefix}display:none; }
+
+}

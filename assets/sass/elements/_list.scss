@@ -1,0 +1,65 @@
+@use "abstracts/variables" as v;
+@use "mixins";
+
+##{v.$main_id}{
+
+    ul, ol {
+
+        --#{v.$prefix}margin-top: 0;
+        --#{v.$prefix}margin-bottom: 0;
+        --#{v.$prefix}font-size: #{ map-get( v.$font-size, 'normal' ) };
+        --#{v.$prefix}font-weight: #{ map-get( v.$font-weight, 'normal' ) };
+        --#{v.$prefix}line-height: #{ map-get( v.$line-height, 'normal' ) };
+
+        font-size:var( --#{v.$prefix}font-size );
+        font-weight:var( --#{v.$prefix}font-weight );
+        line-height:var( --#{v.$prefix}line-height );
+        margin-top:var( --#{v.$prefix}margin-top );
+        margin-bottom:var( --#{v.$prefix}margin-bottom );
+        color:var( --#{v.$prefix}text-color );
+
+        &.#{v.$prefix}work-tags {
+
+            @include mixins.reset-element();
+
+            --#{v.$prefix}margin-bottom: #{ map-get( v.$spacing, 'xs' ) };
+
+            li { 
+                
+                @include mixins.reset-element();
+
+                margin-top:0;
+                margin-bottom:0;
+            
+            }
+
+        }
+
+    }
+
+    .ul-style-none,
+    .ol-style-none {
+
+        ul {
+
+            @include mixins.reset-element();
+
+            li { @include mixins.reset-element(); }
+
+        }
+
+    }
+    .ul-style-flex {
+
+        ul {
+
+            display:flex;
+            flex-wrap:wrap;
+            column-gap:#{ map-get( v.$gutters, 'lg' ) };
+            row-gap:#{ map-get( v.$gutters, 'sm' ) };
+
+        }
+
+    }
+
+}

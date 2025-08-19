@@ -1,0 +1,75 @@
+$prefix: 'prefix-' !default;
+$page_gutter_x: 'page-gutter-x' !default;
+$branding: 'brand' !default;
+$main_id: 'main' !default;
+$prev_next: 'prev-next' !default;
+$work_menu: 'work-menu' !default;
+$page_head: 'page-head' !default;
+$hero: 'hero' !default;
+$card: 'card' !default;
+$container: 'container' !default;
+$section: 'section' !default;
+$menu_open: 'menu-open' !default;
+$menu_fade: 'menu-fade' !default;
+$menu_item: 'menu-item' !default;
+$menu_toggle: 'menu-toggle' !default;
+$site_header: 'site-header' !default;
+$site_header_main: 'site-header-bar' !default;
+$sticky_header: 'sticky-header' !default;
+$site_navigation: 'site-navigation' !default;
+$menu_container: 'menu-container' !default;
+$primary_menu: 'primary-menu' !default;
+$mobile_primary: 'mobile-primary' !default;
+$mobile_secondary: 'mobile-secondary' !default;
+$site_footer: 'site-footer' !default;
+/** animation */
+$ani: 'ani' !default;
+$is_animated: 'is-animated' !default;
+$has_motion: 'has-motion' !default;
+/** breakpoints */
+$breakpoint_sm: 576px !default;
+$breakpoint_md: 768px !default;
+$breakpoint_lg: 992px !default;
+$breakpoint_xl: 1200px !default;
+$breakpoint_xxl: 1400px !default;
+$breakpoint_xxxl: 2300px !default;
+$breakpoint_mobile: $breakpoint_lg !default;
+$breakpoints: (
+    "xs": 0px,
+    "sm": $breakpoint_sm,
+    "md": $breakpoint_md,
+    "lg": $breakpoint_lg,
+    "xl": $breakpoint_xl,
+    "xxl": $breakpoint_xxl,
+    "xxxl": $breakpoint_xxxl,
+    "mobile": $breakpoint_mobile,
+) !default;
+/** misc */
+/** z-index */
+$z-index: ( 
+    "0": 7770,
+    "1": 7771,
+    "2": 7772,
+    "3": 7773,
+    "4": 7774,
+    "5": 7775,
+    "nav": 7776,
+    "header": 7777,
+) !default;
+/** duration */
+$duration: (
+    "xs": 0.222s,
+    "s": 0.43333s,
+    "m": 0.71s,
+    "l": 1.0001s,
+    "xl": 1.40001s,
+    "nav": 0.333333s,
+    "ani": 0.222s,
+    "text": 0.9s,
+    "ticker": 293.555555s
+) !default;
+@forward "typography";
+@forward "colors";
+@forward "widths";
+@forward "spacing";
+@forward "images";

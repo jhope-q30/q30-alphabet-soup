@@ -1,0 +1,108 @@
+@use "abstracts/variables" as v;
+@use "mixins";
+@use "transition";
+
+@mixin btn() {
+
+    @include mixins.reset-default-btn();
+
+    --#{v.$prefix}font-size: #{ map-get( v.$font-size, 'normal' ) };
+    --#{v.$prefix}font-weight: #{ map-get( v.$font-weight, 'medium' ) };
+    --#{v.$prefix}line-height: inherit;
+    --#{v.$prefix}padding-left: #{ map-get( v.$spacing, 'lg' ) };
+    --#{v.$prefix}padding-right: #{ map-get( v.$spacing, 'lg' ) };
+    --#{v.$prefix}padding-top: #{ map-get( v.$spacing, 'md' ) };
+    --#{v.$prefix}padding-bottom: #{ map-get( v.$spacing, 'md' ) };
+    --#{v.$prefix}margin-top: 0;
+    --#{v.$prefix}margin-bottom: 0;
+
+    font-size:var( --#{v.$prefix}font-size );
+    font-weight:var( --#{v.$prefix}font-weight );
+    line-height:var( --#{v.$prefix}line-height );
+    color:var( --#{v.$prefix}button-text-color );
+    background-color:var( --#{v.$prefix}button-background );
+    border-width:var( --#{v.$prefix}button-border-width );
+    border-color:var( --#{v.$prefix}button-border-color );
+    border-radius:var( --#{v.$prefix}button-border-radius );
+    border-style: var( --#{v.$prefix}button-border-style );
+    margin-top:var( --#{v.$prefix}margin-top );
+    margin-bottom:var( --#{v.$prefix}margin-bottom );
+    padding:var( --#{v.$prefix}padding-top ) var( --#{v.$prefix}padding-right ) var( --#{v.$prefix}padding-bottom ) var( --#{v.$prefix}padding-left );
+    text-decoration:none;
+
+    @include transition.x-transition( all );
+    @include mixins.on-event { 
+        
+        color:var( --#{v.$prefix}button-text-hover-color );
+        background-color:var( --#{v.$prefix}button-background-hover );
+        border-color:var( --#{v.$prefix}button-border-hover );
+
+    }
+
+    &.active {
+
+        color:var( --#{v.$prefix}button-text-active-color );
+        background-color:var( --#{v.$prefix}button-background-active );
+        border-color:var( --#{v.$prefix}button-border-active );
+
+    }
+
+}
+
+.button {
+                
+    @include btn();
+
+    --#{v.$prefix}padding-top: #{ map-get( v.$spacing, 'sm' ) + map-get( v.$spacing, 'xs' ) };
+    --#{v.$prefix}padding-bottom: #{ map-get( v.$spacing, 'sm' ) + map-get( v.$spacing, 'xs' ) };
+    --#{v.$prefix}button-background: transparent;
+    --#{v.$prefix}button-stroke-color: var( --#{v.$prefix}button-text-color );
+    
+    display:inline-block;
+
+    > .group {
+
+        display:flex;
+        align-items:stretch;
+        align-content:center;
+        justify-content:space-between;
+        column-gap: map-get( v.$spacing, 'md' );
+        cursor:pointer;
+        color:var( --#{v.$prefix}button-text-color );
+
+        > span {
+
+            @include transition.x-transition( padding-right );
+
+            display:flex;
+            justify-content:flex-end;
+            align-items:center;
+            min-width:40px;
+            min-height:21px;
+            text-align:right;
+
+            > svg * { stroke:var( --#{v.$prefix}button-text-color ); }
+
+        }
+
+    }
+
+    @include mixins.on-event {
+        > .group {
+            color:var( --#{v.$prefix}button-text-hover-color );
+            > span { 
+                padding-right:10px;
+                > svg * { stroke:var( --#{v.$prefix}button-text-hover-color ); }
+            }
+        }
+    }
+
+    /** colors */
+    @each $key, $value in v.$colors {
+        &.#{$key}{
+            --#{v.$prefix}button-border-color: #{ $value };
+            --#{v.$prefix}button-text-color: #{ $value };
+        }
+    }
+
+}

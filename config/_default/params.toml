@@ -1,4 +1,7 @@
 [styles]
+prefix = "qas-"
+page_gutter_x = "page-gutter-x"
+branding = "brand" 
 # header/navigation
 site_header = "site-header"
 site_header_main = "site-header-main"
@@ -19,3 +22,19 @@ ani = "ani"
 has_motion = "has-motion"
 # main
 main_id = "main"
+# body
+page_head = "page-head"
+hero = "hero"
+container = "container"
+section = "section"
+prev_next = "prev-next"
+site_footer = "site-footer"
+card = "card"
+# breakpoints
+breakpoint_sm = "576px"
+breakpoint_md = "768px"
+breakpoint_lg = "992px"
+breakpoint_xl = "1200px"
+breakpoint_xxl = "1400px"
+breakpoint_xxxl = "2300px"
+breakpoint_mobile = "992px"

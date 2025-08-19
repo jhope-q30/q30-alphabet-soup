@@ -1,0 +1,52 @@
+/// spacing ( padding )
+$spacing: (
+    "z": 0,
+    "xs": 5px,
+    "sm": 10px,
+    "md": 20px,
+    "lg": 30px,
+    "xl": 40px,
+    "xxl": 50px,
+    "xxxl": 60px,
+    "huge": 90px,
+);
+
+/// gutters ( grid gutters, or large padding )
+$gutters: (
+    "z": 0px,
+    "xs": 5px,
+    "sm": 15px,
+    "md": 30px,
+    "lg": 60px,
+    "xl": 90px,
+    "xxl": 120px,
+    "huge": 240px,
+);
+
+$pageGutters: (
+    "mobile": 36px,
+    "desktop": 75px
+);
+
+$gridgaps: (
+    "none": (
+        "column": 0,
+        "row": 0,
+    ),
+    "small": (
+        "column": map-get( $gutters, "xs" ),
+        "row": map-get( $gutters, "xs" ),
+    ),
+    "medium": (
+        "column": map-get( $gutters, "md" ),
+        "row": map-get( $gutters, "md" ),
+    ),
+    "large": (
+        "column": map-get( $gutters, "lg" ),
+        "row": map-get( $gutters, "md" ),
+    ),
+    "extra-large": (
+        "column": map-get( $gutters, "xl" ),
+        "row": map-get( $gutters, "lg" ),
+    )
+);

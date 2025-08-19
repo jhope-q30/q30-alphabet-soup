@@ -1,3 +1,58 @@
 @charset "UTF-8";
 
 @use "hugo:vars" as hugo;
+@use "abstracts/variables" with (
+    $prefix: hugo.$prefix,
+    $page_gutter_x: hugo.$page_gutter_x,
+    $branding: hugo.$branding,
+    $main_id: hugo.$main_id,
+    $prev_next: hugo.$prev_next,
+    $page_head: hugo.$page_head,
+    $hero: hugo.$hero,
+    $card: hugo.$card,
+    $container: hugo.$container,
+    $section: hugo.$section,
+    $menu_open: hugo.$menu_open,
+    $menu_fade: hugo.$menu_fade,
+    $menu_item: hugo.$menu_item,
+    $menu_toggle: hugo.$menu_toggle,
+    $site_header: hugo.$site_header,
+    $site_header_main: hugo.$site_header_main,
+    $site_navigation: hugo.$site_navigation,
+    $sticky_header: hugo.$sticky_header,
+    $menu_container: hugo.$menu_container,
+    $primary_menu: hugo.$primary_menu,
+    $mobile_primary: hugo.$mobile_primary,
+    $mobile_secondary: hugo.$mobile_secondary,
+    $site_footer: hugo.$site_footer,
+    $ani: hugo.$ani,
+    $is_animated: hugo.$is_animated,
+    $has_motion: hugo.$has_motion,
+    $breakpoint_sm: hugo.$breakpoint_sm,
+    $breakpoint_md: hugo.$breakpoint_md,
+    $breakpoint_lg: hugo.$breakpoint_lg,
+    $breakpoint_xl: hugo.$breakpoint_xl,
+    $breakpoint_xxl: hugo.$breakpoint_xxl,
+    $breakpoint_xxxl: hugo.$breakpoint_xxxl,
+    $breakpoint_mobile: hugo.$breakpoint_mobile,
+);
+
+@use "transition";
+
+/// base
+@use "root";
+@use "base";
+@use "header";
+@use "main";
+
+/// navigation
+@use "navigation/skip-to-content";
+@use "navigation/navigation";
+@use "navigation/hamburger";
+@use "navigation/toggle-motion";
+
+/// elements
+@use "elements/elements";
+
+/// components
+@use "components/components";

@@ -1,0 +1,150 @@
+@use "abstracts/variables" as v;
+@use "mixins";
+@use "transition";
+
+@mixin link( $type: none ){
+
+    --#{v.$prefix}font-size: 1em;
+    --#{v.$prefix}font-weight: inherit;
+    --#{v.$prefix}line-height: inherit;
+    --#{v.$prefix}text-decoration: none;
+    --#{v.$prefix}text-decoration-hover: none;
+    --#{v.$prefix}text-decoration-color: inherit;
+
+    @if $type == flood {
+
+        --#{v.$prefix}link-text-hover-color: var( --#{v.$prefix}flood-text-color );
+
+        background:var( --#{v.$prefix}flood-background );
+        background-size:calc( 200% + 1px );
+
+    } @else if $type == underline {
+
+        @include linkUnderline();
+
+    }
+
+    font-size:var( --#{v.$prefix}font-size );
+    font-weight:var( --#{v.$prefix}font-weight );
+    line-height:var( --#{v.$prefix}line-height );
+    color:var( --#{v.$prefix}link-text-color );
+    text-decoration:var( --#{v.$prefix}text-decoration );
+    text-decoration-color:var( --#{v.$prefix}text-decoration-color );
+
+    @include transition.x-transition( all );
+    @include mixins.on-event {
+
+        @if $type == flood {
+
+            --#{v.$prefix}text-decoration-color: var( --#{v.$prefix}flood-color );
+            background-position:-100%;
+
+        } @else if $type == underline {
+
+            --#{v.$prefix}link-background-position:-100% 100%;
+
+        }
+        color:var( --#{v.$prefix}link-text-hover-color );
+
+    }
+    &.active { --#{v.$prefix}link-text-color: var( --#{v.$prefix}link-text-active-color ); }
+    &:focus { outline:var( --#{v.$prefix}outline ); }
+    &[target="_blank"]:active,
+    &[target="_blank"]:visited { color:var( --#{v.$prefix}link-text-color ); }
+
+}
+
+@mixin linkUnderline(){
+
+    --#{v.$prefix}link-background-position: 0 100%;
+    --#{v.$prefix}link-underline-thickness: 1px;
+    --#{v.$prefix}link-underline-color: var( --#{v.$prefix}flood-color );
+
+    background:linear-gradient( to right, transparent, transparent 50%, var( --#{v.$prefix}link-underline-color ) 50% );
+    background-size:calc( 200% + 1px ) var( --#{v.$prefix}link-underline-thickness );
+    background-position:var( --#{v.$prefix}link-background-position );
+    background-repeat:repeat-x;
+
+}
+
+a {
+
+    &.link { @include link( $type: underline ); }
+
+    &:not( .button, .skip ),
+    &.title,
+    &.backto,
+    &.to { @include link(); }
+
+    &.backto,
+    &.to {
+
+        --#{v.$prefix}font-size: #{ map-get( v.$font-size, 'nav' ) };
+        --#{v.$prefix}link-text-color: var( --#{v.$prefix}color-pink-shade );
+        --#{v.$prefix}link-text-hover-color: var( --#{v.$prefix}color-charcoal );
+
+        display:flex;
+        align-items:center;
+        text-decoration:none;
+        padding:1px 0;
+
+        @include mixins.on-event { 
+            
+            > span { --#{v.$prefix}link-background-position: -100% 100%; }
+            > svg { * { stroke:var( --#{v.$prefix}link-text-hover-color ); } }
+        
+        }
+
+        > span {
+            
+            @include transition.x-transition( all );
+            @include linkUnderline();
+
+            --#{v.$prefix}link-underline-thickness: 1px;
+            --#{v.$prefix}link-underline-color: var( --#{v.$prefix}link-text-hover-color );
+
+            color:inherit;
+            margin-left:#{ map-get( v.$spacing, 'sm' ) };
+            line-height:#{ map-get( v.$line-height, 'normal' ) };
+        
+        }
+        > svg {
+
+            width:30px;
+            height:30px;
+            flex-shrink:0;
+
+            * { stroke:var( --#{v.$prefix}link-text-color ); }
+
+        }
+
+        &:not( .backto ){
+
+            > span {
+            
+                margin-left:0;
+                margin-right:#{ map-get( v.$spacing, 'sm' ) };
+            
+            }
+
+        }
+
+        /** colors */
+        @each $key, $value in v.$colors {
+            &.#{$key}{
+                --#{v.$prefix}link-text-color: #{ $value };
+                --#{v.$prefix}link-underline-color: #{ $value };
+                --#{v.$prefix}text-decoration-color: #{ $value };
+                --#{v.$prefix}link-text-hover-color: #{ $value };
+            }
+        }
+
+    }
+
+}
+
+##{v.$main_id} {
+
+    a:not([class]) { @include link( $type: underline ); }
+
+}

@@ -1,0 +1,49 @@
+@use "abstracts/variables" as v;
+
+@mixin section(){
+
+    --#{v.$prefix}padding-top: #{ map-get( v.$gutters, 'xl' ) };
+    --#{v.$prefix}padding-bottom: #{ map-get( v.$gutters, 'xl' ) };
+    --#{v.$prefix}background-color: var( --#{v.$prefix}body-background-color );
+
+    padding-top:var( --#{v.$prefix}padding-top );
+    padding-bottom:var( --#{v.$prefix}padding-bottom );
+    background-color: var( --#{v.$prefix}background-color );
+
+    @media screen and ( min-width: #{ map-get( v.$breakpoints, "xxl" ) } ) { 
+
+        --#{v.$prefix}padding-top: #{ map-get( v.$gutters, 'xxl' ) };
+        --#{v.$prefix}padding-bottom: #{ map-get( v.$gutters, 'xxl' ) };
+
+    }
+
+}
+
+[class^="#{v.$section}"] {
+
+    &.no-pad-top { --#{v.$prefix}padding-top:0; }
+    &.no-pad-bottom { --#{v.$prefix}padding-bottom:0; }
+
+    .#{v.$section}-head {
+
+        --#{v.$prefix}padding-top: 0;
+        --#{v.$prefix}padding-bottom: #{ map-get( v.$spacing, 'md' ) };
+
+        padding-bottom:var( --#{v.$prefix}padding-bottom );
+
+        @media screen and ( min-width: #{ map-get( v.$breakpoints, "mobile" ) } ) { --#{v.$prefix}padding-bottom: map-get( v.$spacing, 'sm' ); }
+
+        > h2:first-child,
+        > h3:first-child,
+        > h4:first-child,
+        > h5:first-child { --#{v.$prefix}margin-bottom:0; }
+
+    }
+
+    .#{v.$section}-item {
+
+        > hr { --#{v.$prefix}padding-bottom: #{ map-get( v.$gutters, 'md' ) }; }
+
+    }
+    
+}

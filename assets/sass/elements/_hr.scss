@@ -1,0 +1,17 @@
+@use "abstracts/variables" as v;
+
+hr {
+
+    --#{v.$prefix}margin-top: 0;
+    --#{v.$prefix}margin-bottom: 0;
+    --#{v.$prefix}padding-top: 0;
+    --#{v.$prefix}padding-bottom: 0;
+
+    border:0;
+    border-top:var( --#{v.$prefix}border-width ) var( --#{v.$prefix}border-style ) var( --#{v.$prefix}border-color );
+    margin-top:var( --#{v.$prefix}margin-top );
+    margin-bottom:var( --#{v.$prefix}margin-bottom );
+    padding-top:var( --#{v.$prefix}padding-top );
+    padding-bottom:var( --#{v.$prefix}padding-bottom );
+
+}
