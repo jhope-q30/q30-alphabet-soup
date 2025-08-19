@@ -16,7 +16,3 @@ Aenean eu erat sit amet felis scelerisque scelerisque. Quisque sit amet libero e
 Donec vel dictum arcu. Fusce bibendum tortor leo, non sollicitudin nibh porttitor id. Mauris dui quam, pellentesque eu dolor eget, faucibus lacinia ipsum. Ut justo orci, cursus condimentum sagittis quis, mattis a dui. Curabitur cursus ac ligula a faucibus. Pellentesque in leo nec metus lacinia condimentum sed sit amet arcu. Suspendisse potenti. Donec bibendum quis orci volutpat ullamcorper.
 
 Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Morbi sollicitudin tellus et venenatis ornare. Nam at pellentesque metus, sed semper nibh. Pellentesque posuere non leo vitae volutpat. Integer lacinia leo sed ultricies varius. Praesent consectetur pulvinar nisi, eu lacinia sem ornare sed. Praesent sit amet quam et diam finibus hendrerit. Phasellus quis ex ut ex congue molestie. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Proin consequat tempus maximus. Interdum et malesuada fames ac ante ipsum primis in faucibus.
-
-This is a test
-
-{{<wrapper>}}This is another test{{</wrapper>}}
